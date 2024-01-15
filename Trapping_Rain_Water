@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int min(int a,int b)
+    {
+        if(a>b)
+        {
+            return b;
+        }
+        else
+        {
+            return a;
+        }
+    }
+    int trap(vector<int>& height) {
+        vector<int>lm;
+        vector<int>rm;
+        int max=0;
+        for(int i=0;i<height.size();i++)
+        {
+            if(max<height[i])
+            {
+                max=height[i];
+            }
+            lm.push_back(max);
+        }
+        max=0;
+        for(int i=height.size()-1;i>=0;i--)
+        {
+            if(max<height[i])
+            {
+                max=height[i];
+            }
+            rm.push_back(max);
+        }
+        reverse(rm.begin(),rm.end());
+        int sum=0;
+        for(int i=0;i<height.size();i++)
+        {
+            if(lm[i]>height[i] && rm[i]>height[i])
+            {
+                sum+=min(lm[i],rm[i])-height[i];
+            }
+        }
+        return sum;
+    }
+};
