@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+void Subset(vector<int>a,int index,vector<int>ans,int size)
+{
+    if(index>=size) 
+    {
+        for(int i=0;i<ans.size();i++) cout<<ans[i]<<" ";
+        cout<<endl;
+        return;
+    }
+    ans.push_back(a[index]);
+    Subset(a,index+1,ans,size); 
+    ans.pop_back();
+    Subset(a,index+1,ans,size);
+}
+int main()
+{
+    vector<int> a={1,3,7};
+    Subset(a,0,{},a.size());
+}
