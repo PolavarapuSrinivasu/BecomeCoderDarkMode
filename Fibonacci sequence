@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    vector<int>a;
+    a.push_back(0);
+    a.push_back(1);
+    int f=0,s=1;
+    while(f<20)
+    {
+        a.push_back(a[f]+a[s]);
+        f++;
+        s++;
+    }
+    for(int i=0;i<a.size();i++)
+    {
+        cout<<a[i]<<" ";
+    }
+    return 0;
+}
