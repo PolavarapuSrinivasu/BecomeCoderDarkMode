@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+void sub_sequence(vector<int>a,int index,int size,vector<int>aa)
+{
+    if(index>=size)
+    {
+        for(int i=0;i<aa.size();i++)
+        {
+            cout<<aa[i]<<" ";
+        }
+        cout<<endl;
+        return;
+    }
+    if(aa.size()==0 || aa.back() < a[index])
+    {
+        aa.push_back(a[index]);
+        sub_sequence(a,index+1,size,aa);
+        aa.pop_back();
+        sub_sequence(a,index+1,size,aa);
+    }
+    else
+    {
+        sub_sequence(a,index+1,size,aa);
+    }
+}
+int main()
+{
+    vector<int> a = {9,7,4,10};
+    sub_sequence(a,0,a.size(),{});
+    
+}
